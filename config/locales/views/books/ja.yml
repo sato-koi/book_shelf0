@@ -16,3 +16,5 @@ ja:
       question_book: "%{book}を削除しますか？"
       chancel: キャンセル
       delete_action: 削除する
+    index:
+      price_yen: "¥%{price}"
