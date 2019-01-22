@@ -1,5 +1,5 @@
 <div class="col-md-8 offset-md-2 mt-3">
-  </div class="user-box">
+  <div class="user-box">
     <h3 class="text-center"><%= t ".title" %></h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -15,7 +15,7 @@
       </div>
 
       <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar.variant(resize: "300x300"), class: "img-thubnail" %>
+        <%= image_tag current_user.avatar.variant(resize: "300x300"), class: "img-thumbnail" %>
       <% end %>
 
       <div class="form-group">
@@ -50,10 +50,10 @@
         <%= f.submit t(".submit"), class: "btn btn-primary" %>
       </div>
     <% end %>
-    
+
     <div class="form-inline mt-2">
-      <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に退会しますか?"} %>
-      <%= link_to "戻る", :back, class: "btn-secondary ml-2" %>
+      <%= button_to t(".account_delete"), registration_path(resource_name), data: { confirm: t(".confirm") }, method: :delete, class: "btn btn-warning" %>
+      <%= link_to t(".return"), :back, class: "btn btn-secondary ml-2" %>
     </div>
   </div>
 </div>
