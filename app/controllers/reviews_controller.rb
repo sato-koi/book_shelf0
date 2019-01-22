@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_review, only: :show
   
   def new
     @book = Book.find(params[:book_id])
@@ -17,11 +18,18 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
+  
+  def show
+  end
 
   private
 
   def review_params
     params.require(:review).permit(:title, :body, :evaluation)
+  end
+  
+  def set_review
+    @review = Review.find(params[:id])
   end
 
 end
