@@ -2,7 +2,6 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   
   def index
-    @books = Book.find_newest_books(params[:page])
   end
   
   def new
