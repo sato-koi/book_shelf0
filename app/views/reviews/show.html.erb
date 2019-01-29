@@ -17,4 +17,8 @@
     <small><%= @review.created_at.strftime("%Y年%m月%d日") %></small>
   </div>
   <%= simple_format @review.body %>
+  <% if user_signed_in? && current_user.id == @review.user_id %>
+    <%= link_to t(".edit"), edit_book_review_path(@book, @review), class: "btn btn-info" %>
+  <% end %>
+  <%= link_to t(".back"), @book, class: "btn btn-secondary" %>
 </div>
