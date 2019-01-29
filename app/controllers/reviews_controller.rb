@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: :show
+  before_action :set_book, only: [:show, :new, :edit]
+  before_action :set_review, only: [:show, :edit, :update]
   
   def new
     @book = Book.find(params[:book_id])
@@ -22,12 +23,27 @@ class ReviewsController < ApplicationController
   def show
   end
 
+  def edit
+  end 
+  
+  def update
+    if @review.update(review_params)
+      redirect_to @review.book, notice: "レビューを更新しました。"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def review_params
     params.require(:review).permit(:title, :body, :evaluation)
   end
   
+  def set_book
+    @book = Book.find(params[:book_id])
+  end
+
   def set_review
     @review = Review.find(params[:id])
   end
